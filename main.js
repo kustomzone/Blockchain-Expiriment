@@ -29,3 +29,15 @@ try {
     console.log("If this is your first time executing the node program, ignore this.");
     requires.fs.mkDirSync('./blocks');
 }
+try {
+  var blockList = requires.fs.readFileSync('./blocks/list.json');
+} catch (e) {
+    if (e.code == 'ENOENT') {
+      requires.writeFileSync('./blocks/list.json','[]');
+      var blockList = [];
+    } else {
+      console.log(('Something happened, and when opening the blocklist file, the error ' + e.code + ' was thrown.').bold.red); 
+    }
+  }
+}
+}
