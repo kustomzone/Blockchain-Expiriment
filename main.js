@@ -34,7 +34,7 @@ try {
   console.log("Block list loaded.".green);
 } catch (e) {
     if (e.code == 'ENOENT') {
-      requires.writeFileSync('./blocks/list.json','[]');
+      requires.fs.writeFileSync('./blocks/list.json','[]');
       var blockList = [];
     } else {
       console.log(('Something happened, and when opening the blocklist file, the error ' + e.code + ' was thrown.').bold.red); 
