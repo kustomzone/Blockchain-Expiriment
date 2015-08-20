@@ -1,9 +1,6 @@
 @echo off
-npm -v > nul
-if %errorlevel%==9009 (echo npm does not exist: exit)
-np
-node -v > nul
-if %errorlevel%==9009 (echo node does not exist: exit)
+where /q npm  || (echo npm does not exist: pause: exit)
+where /q node || (echo node does not exist: pause: exit)
 
 npm install big-integer
 npm install colors
