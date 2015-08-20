@@ -30,7 +30,8 @@ try {
     requires.fs.mkDirSync('./blocks');
 }
 try {
-  var blockList = requires.fs.readFileSync('./blocks/list.json');
+  var blockList = JSON.parse(requires.fs.readFileSync('./blocks/list.json'));
+  console.log("Block list loaded.".green);
 } catch (e) {
     if (e.code == 'ENOENT') {
       requires.writeFileSync('./blocks/list.json','[]');
