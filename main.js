@@ -42,3 +42,15 @@ try {
   }
 }
 }
+//Do we know any nodes?
+try {
+  var nodeList = JSON.parse(requires.fs.readFileSync('./nodes.be.json'));
+  console.log("Node list loaded.".green);
+} catch (e) {
+  if (e.code == 'ENOENT') {
+    var nodeList = [];
+    requires.fs.writeFileSync('./nodes.be.json');
+  } else {
+    console.log(('Something happened, and when opening the nodelist file, the error ' + e.code + ' was thrown.').bold.red);
+  }
+}
